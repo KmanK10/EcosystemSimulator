@@ -3,33 +3,30 @@ import java.awt.*;
 
 // Runs the Simulation in a Swing GUI
 public class GUI {
-    private LifeModel model;    // The grid data
+    private static final int PIXEL_SIZE = 25;
+    private Model model;    // The grid data
     private JFrame window;      // The window
     private JPanel gridPanel;   // The drawing area
 
     // Set up the GUI
-    public GUI(LifeModel model) {
+    public GUI(Model model) {
         this.model = model;
-        window = new JFrame("Game of Life");
+        window = new JFrame("Ecosystem Simulator");
         gridPanel = new JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g); // Clear the panel
+                g.setColor(new Color(16, 177, 80));
 
                 // Create the "pixels" of the GUI
                 for (int i = 0; i < model.getRows(); i++) {
                     for (int j = 0; j < model.getCols(); j++) {
-                        if (model.isAlive(i, j)) {
-                            g.setColor(Color.YELLOW);
-                        } else {
-                            g.setColor(Color.BLUE);
-                        }
-                        g.fillRect(j * 10, i * 10, 10, 10);
+                        g.fillRect(j * PIXEL_SIZE, i * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
                     }
                 }
             }
         };
 
-        gridPanel.setPreferredSize(new Dimension(model.getCols() * 10, model.getRows() * 10));
+        gridPanel.setPreferredSize(new Dimension(model.getCols() * PIXEL_SIZE, model.getRows() * PIXEL_SIZE));
         window.add(gridPanel);
         window.pack();
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -39,7 +36,7 @@ public class GUI {
 
     // Update the model and repaint the grid
     public void update() {
-        model.update();
+        //model.update();
         gridPanel.repaint();
     }
 }
