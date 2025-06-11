@@ -15,11 +15,11 @@ public class GUI {
         gridPanel = new JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g); // Clear the panel
-                g.setColor(new Color(16, 177, 80));
 
                 // Create the "pixels" of the GUI
                 for (int i = 0; i < model.getRows(); i++) {
                     for (int j = 0; j < model.getCols(); j++) {
+                        g.setColor(model.terrainAt(i, j).getColor());
                         g.fillRect(j * PIXEL_SIZE, i * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
                     }
                 }
