@@ -6,10 +6,10 @@ import java.awt.*;
 // Graphical user interface for the ecosystem simulation
 public class GUI {
     private static final int PIXEL_SIZE = 15; // Size of each grid cell in pixels
+    private final static int SIZE = 60; // Default grid size
     private Model model; // Reference to the simulation model
     private JFrame window; // Main window for the GUI
     private JPanel gridPanel; // Panel to display the grid
-    private final static int SIZE = 60; // Default grid size (used in main)
 
     // Constructor initializes the GUI with the given model
     public GUI(Model model) {
