@@ -105,10 +105,9 @@ The project consists of the following Java classes:
 
 ## Future Improvements
 
-**Dynamic Grid Size**: Allow users to specify grid dimensions via command-line arguments or GUI input.
-
+- **Dynamic Grid Size**: Allow users to specify grid dimensions via command-line arguments or GUI input.
 - **Tunable Parameters**: Expose terrain generation parameters (e.g., `scale`, `persistence`) in the GUI.
-- **Enhanced Visualization**: Add a height map overlay or color-coded probability map for food growth.
+- **Animal Interactions**: Implement reproduction or more complex food chain dynamics.
 - **Save/Load**: Add functionality to save and load terrain states.
 - **Color Key**: Add a key to show what colored pixel is what object.
 
