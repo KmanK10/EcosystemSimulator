@@ -1,13 +1,15 @@
+// Davin Yoon and Kiefer Menard CS 142 Professor Julio Garabay
+
 import javax.swing.*;
 import java.awt.*;
 
 // Graphical user interface for the ecosystem simulation
 public class GUI {
-    private static final int PIXEL_SIZE = 25; // Size of each grid cell in pixels
+    private static final int PIXEL_SIZE = 15; // Size of each grid cell in pixels
     private Model model; // Reference to the simulation model
     private JFrame window; // Main window for the GUI
     private JPanel gridPanel; // Panel to display the grid
-    private final static int SIZE = 25; // Default grid size (used in main)
+    private final static int SIZE = 60; // Default grid size (used in main)
 
     // Constructor initializes the GUI with the given model
     public GUI(Model model) {
@@ -27,14 +29,24 @@ public class GUI {
         JMenu addMenu = new JMenu("Add");
 
         // Button to add food to a random empty cell
-        JButton addAnimalBtn = new JButton("Food"); // Note: Button label is misleading; it adds Food, not Animal
-        addAnimalBtn.addActionListener(e -> model.replaceTerrain(new Food())); // Add Food on click
-        addMenu.add(addAnimalBtn); // Add button to menu
+        JButton addFoodBtn = new JButton("Food");
+        addFoodBtn.addActionListener(e -> model.replaceTerrain(new Food())); // Add Food on click
+        addMenu.add(addFoodBtn); // Add button to menu
 
         // Button to add an animal to a random empty cell
-        JButton addFoodBtn = new JButton("Animal"); // Note: Variable name is misleading; it adds Animal, not Food
-        addFoodBtn.addActionListener(e -> model.replaceTerrain(new Animal())); // Add Animal on click
-        addMenu.add(addFoodBtn); // Add button to menu
+        JButton addHogBtn = new JButton("Hog");
+        addHogBtn.addActionListener(e -> model.replaceTerrain(new Hog())); // Add Hog on click
+        addMenu.add(addHogBtn); // Add button to menu
+
+        // Button to add an animal to a random empty cell
+        JButton addMouseBtn = new JButton("Mouse");
+        addMouseBtn.addActionListener(e -> model.replaceTerrain(new Mouse())); // Add Animal on click
+        addMenu.add(addMouseBtn); // Add button to menu
+
+        // Button to add an animal to a random empty cell
+        JButton addTigerBtn = new JButton("Tiger");
+        addTigerBtn.addActionListener(e -> model.replaceTerrain(new Tiger())); // Add Animal on click
+        addMenu.add(addTigerBtn); // Add button to menu
 
         menuBar.add(addMenu); // Add menu to menu bar
         
@@ -48,7 +60,7 @@ public class GUI {
                 // Draw each cell based on its terrain type's color
                 for (int i = 0; i < model.getRows(); i++) {
                     for (int j = 0; j < model.getCols(); j++) {
-                        g.setColor(model.terrainAt(i, j).getColor()); // Get color from terrain
+                        g.setColor(model.getColor(i, j)); // Get color from terrain
                         g.fillRect(j * PIXEL_SIZE, i * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE); // Draw cell
                     }
                 }
