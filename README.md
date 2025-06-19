@@ -95,7 +95,7 @@ The project consists of the following Java classes:
   - `persistence = 0.1`: Reduces amplitude of higher octaves.
   - `lacunarity = 2.0`: Doubles frequency per octave.
   - Normalized to `[0, 255]` with a non-linear contrast adjustment (`Math.pow(normalized, 0.8)`).
-- **Food Growth**: Berries spawn on grass or sand within `[90, 150]` (120 ± 30) with a probability of `0.001 * (1 - |height - 120| / 30)`, checked during updates.
+- **Food Growth**: Berries spawn on grass or sand within `[120, 150]` with a probability of `0.001 * (1 - |height - 120| / 30)`, checked during updates.
 - **Animal Mechanics**:
   - Move randomly with class-specific probabilities (e.g., `Mouse.move()`, `Tiger.move()`).
   - Cannot move to rocks, water, or certain animals (e.g., tigers block mice and hogs).
@@ -103,29 +103,25 @@ The project consists of the following Java classes:
   - Die after 50 updates or if color becomes too light (RGB &gt; 245).
 - **GUI**: Uses Swing with a `JPanel` for rendering and a `Timer` for updates.
 
-## Known Limitations
-
-- **Sparse Food**: The 0.1% base probability for food growth may result in sparse berry placement. Adjust the probability in `Model.update()` (e.g., increase `0.001` to `0.01`) for more food.
-- **Fixed Grid Size**: The default 60x60 grid is hardcoded in `GUI.java`. Modify `SIZE` for different dimensions.
-- **Animal Density**: Maximum counts (`foodMax`, `rockMax`, etc.) limit entity placement, which may feel restrictive on smaller grids.
-- **Performance**: Large grids or frequent updates may slow down due to the Perlin noise computation and grid updates.
-
 ## Future Improvements
 
 **Dynamic Grid Size**: Allow users to specify grid dimensions via command-line arguments or GUI input.
 
 - **Tunable Parameters**: Expose terrain generation parameters (e.g., `scale`, `persistence`) in the GUI.
 - **Enhanced Visualization**: Add a height map overlay or color-coded probability map for food growth.
-- **Animal Interactions**: Implement reproduction or more complex food chain dynamics.
 - **Save/Load**: Add functionality to save and load terrain states.
+- **Color Key**: Add a key to show what colored pixel is what object.
 
 ## Authors
 
-- Davin Yoon
 - Kiefer Menard
+- Davin Yoon
 
 ## Acknowledgments
 
 - Professor Julio Garabay, CS 142.
 - Ken Perlin’s Improved Noise algorithm (2002) for terrain generation.
-- AI assistance for writing the `generateHeightMap` function.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
